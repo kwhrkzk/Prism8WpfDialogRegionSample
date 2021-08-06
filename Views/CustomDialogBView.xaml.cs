@@ -1,6 +1,6 @@
 using System.Windows.Controls;
 
-namespace Prism8WpfSample.Views
+namespace Prism8WpfDialogRegionSample.Views
 {
     public partial class CustomDialogBView : UserControl
     {

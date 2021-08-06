@@ -1,24 +1,16 @@
-using System.ComponentModel;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using Reactive.Bindings;
 
-namespace Prism8WpfSample.ViewModels
+namespace Prism8WpfDialogRegionSample.ViewModels
 {
     public class CustomDialogABViewModel : BindableBase, INavigationAware
     {
         private IRegionNavigationService? NavigationService { get; set; }
 
-        public ReactiveCommand CustomDialogAACommand { get; } = new ReactiveCommand();
-        public ReactiveCommand CustomDialogBBCommand { get; } = new ReactiveCommand();
-        public ReactiveCommand ContentViewCommand { get; } = new ReactiveCommand();
+        public DelegateCommand CustomDialogAACommand { get; init; }
 
-        public CustomDialogABViewModel()
-        {
-            CustomDialogAACommand.Subscribe(() => NavigationService.RequestNavigate("CustomDialogAAView"));
-            CustomDialogBBCommand.Subscribe(() => NavigationService.RequestNavigate("CustomDialogBBView"));
-            ContentViewCommand.Subscribe(() => NavigationService.RequestNavigate("ContentView"));
-        }
+        public CustomDialogABViewModel() => CustomDialogAACommand = new DelegateCommand(() => NavigationService.RequestNavigate("CustomDialogAAView"));
 
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
         public void OnNavigatedFrom(NavigationContext navigationContext) {}

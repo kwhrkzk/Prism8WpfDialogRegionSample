@@ -1,38 +1,28 @@
-using System;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
-using Reactive.Bindings;
 
-namespace Prism8WpfSample.ViewModels
+namespace Prism8WpfDialogRegionSample.ViewModels
 {
-    public class ContentViewModel : BindableBase, INavigationAware, IRegionMemberLifetime
+    public class ContentViewModel : BindableBase, INavigationAware
     {
-
-        public bool KeepAlive => true;
         private IRegionNavigationService? NavigationService { get; set; }
-        public ReactiveCommand DialogACommand { get; } = new ReactiveCommand();
-        public ReactiveCommand DialogBCommand { get; } = new ReactiveCommand();
         private IDialogService DialogService { get; init; }
+
+        public DelegateCommand DialogACommand { get; init; }
+        public DelegateCommand DialogBCommand { get; init; }
 
         public ContentViewModel(IDialogService _dialogService)
         {
             DialogService = _dialogService;
 
-            //DialogACommand.Subscribe(_ => DialogService.Show("CustomDialogAView", new DialogParameters{ { "ViewName", "CustomDialogABView" } }, _ => {}, "CustomDialogAWindow"));
-            DialogACommand.Subscribe(_ => DialogService.Show("CustomDialogAView"));
-            DialogBCommand.Subscribe(_ => DialogService.Show("CustomDialogBView", new DialogParameters(), _ => {}, "CustomDialogBWindow"));
+            DialogACommand = new DelegateCommand(() => DialogService.Show("CustomDialogAView", new DialogParameters{ { "ViewName", "CustomDialogABView" } }, _ => {}, "CustomDialogAWindow"));
+            DialogBCommand = new DelegateCommand(() => DialogService.Show("CustomDialogBView", new DialogParameters(), _ => {}, "CustomDialogBWindow"));
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            NavigationService = navigationContext.NavigationService;
-        }
+        public void OnNavigatedFrom(NavigationContext navigationContext) {}
+        public void OnNavigatedTo(NavigationContext navigationContext) => NavigationService = navigationContext.NavigationService;
     }
 }

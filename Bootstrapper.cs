@@ -4,9 +4,9 @@ using Prism.Modularity;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using Prism.Unity;
-using Prism8WpfSample.Views;
+using Prism8WpfDialogRegionSample.Views;
 
-namespace Prism8WpfSample
+namespace Prism8WpfDialogRegionSample
 {
     public class Bootstrapper : PrismBootstrapper
     {
@@ -29,11 +29,8 @@ namespace Prism8WpfSample
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            //Container.Resolve<IRegionManager>().RegisterViewWithRegion("CustomDialogARegion", typeof(CustomDialogAAView));
-            //Container.Resolve<IRegionManager>().RegisterViewWithRegion("CustomDialogARegion", typeof(CustomDialogABView));
 
             Container.Resolve<IRegionManager>().RequestNavigate("ContentRegion", nameof(ContentView));
-            //Container.Resolve<IRegionManager>().RegisterViewWithRegion("ContentRegion", typeof(ContentView));
         }
     }
 }

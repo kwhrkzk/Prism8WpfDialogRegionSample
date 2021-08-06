@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Prism8WpfSample
+namespace Prism8WpfDialogRegionSample
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,7 +1,7 @@
 using System.Windows;
 using Prism.Services.Dialogs;
 
-namespace Prism8WpfSample.Views
+namespace Prism8WpfDialogRegionSample.Views
 {
     public partial class CustomDialogBWindow : Window, IDialogWindow
     {

@@ -1,8 +1,8 @@
-<Window x:Class="Prism8WpfSample.Views.CustomDialogAWindow"
+<Window x:Class="Prism8WpfDialogRegionSample.Views.CustomDialogAWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CustomDialogAWindow"
-        Height="200" Width="400"
-        WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight">
+        Title="{Binding Title}"
+        Height="600" Width="400"
+        WindowStartupLocation="CenterScreen">
 
 </Window>

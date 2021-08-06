@@ -1,7 +1,7 @@
-﻿<Application x:Class="Prism8WpfSample.App"
+﻿<Application x:Class="Prism8WpfDialogRegionSample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Prism8WpfSample">
+             xmlns:local="clr-namespace:Prism8WpfDialogRegionSample">
     <Application.Resources>
          
     </Application.Resources>

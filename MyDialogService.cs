@@ -3,7 +3,7 @@ using Prism.Ioc;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 
-namespace Prism8WpfSample
+namespace Prism8WpfDialogRegionSample
 {
     public class MyDialogService : DialogService
     {
