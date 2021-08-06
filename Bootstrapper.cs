@@ -14,7 +14,7 @@ namespace Prism8WpfSample
         {
             c.Register<IDialogService, MyDialogService>();
 
-            //c.RegisterForNavigation<ContentView>();
+            c.RegisterForNavigation<ContentView>();
             c.RegisterForNavigation<CustomDialogAAView>();
             c.RegisterForNavigation<CustomDialogABView>();
 
@@ -32,8 +32,8 @@ namespace Prism8WpfSample
             //Container.Resolve<IRegionManager>().RegisterViewWithRegion("CustomDialogARegion", typeof(CustomDialogAAView));
             //Container.Resolve<IRegionManager>().RegisterViewWithRegion("CustomDialogARegion", typeof(CustomDialogABView));
 
-            //Container.Resolve<IRegionManager>().RequestNavigate("ContentRegion", nameof(ContentView));
-            Container.Resolve<IRegionManager>().RegisterViewWithRegion("ContentRegion", typeof(ContentView));
+            Container.Resolve<IRegionManager>().RequestNavigate("ContentRegion", nameof(ContentView));
+            //Container.Resolve<IRegionManager>().RegisterViewWithRegion("ContentRegion", typeof(ContentView));
         }
     }
 }

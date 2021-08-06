@@ -17,13 +17,15 @@ namespace Prism8WpfSample
             _regionManager = regionManager;
         }
 
-        protected override void ConfigureDialogWindowProperties(IDialogWindow window, FrameworkElement dialogContent, IDialogAware viewModel)
+        protected override void ConfigureDialogWindowContent(string dialogName, IDialogWindow window, IDialogParameters parameters)
         {
-            //var rm = _regionManager.CreateRegionManager();
-            //RegionManager.SetRegionManager(window as Window, _regionManager);
-            //RegionManager.UpdateRegions();
+            var rm = _regionManager.CreateRegionManager();
+            RegionManager.SetRegionManager(window as Window, rm);
+            RegionManager.UpdateRegions();
 
-            base.ConfigureDialogWindowProperties(window, dialogContent, viewModel);
+            parameters.Add("rm", rm);
+
+            base.ConfigureDialogWindowContent(dialogName, window, parameters);
         }
     }
 }

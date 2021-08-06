@@ -1,14 +1,12 @@
 using System.ComponentModel;
+using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
 
 namespace Prism8WpfSample.ViewModels
 {
-    public class CustomDialogABViewModel : INavigationAware
+    public class CustomDialogABViewModel : BindableBase, INavigationAware
     {
-#pragma warning disable 0067
-        public event PropertyChangedEventHandler? PropertyChanged;
-#pragma warning restore 0067
         private IRegionNavigationService? NavigationService { get; set; }
 
         public ReactiveCommand CustomDialogAACommand { get; } = new ReactiveCommand();
@@ -22,8 +20,8 @@ namespace Prism8WpfSample.ViewModels
             ContentViewCommand.Subscribe(() => NavigationService.RequestNavigate("ContentView"));
         }
 
-        public void OnNavigatedTo(NavigationContext navigationContext) {}
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
-        public void OnNavigatedFrom(NavigationContext navigationContext) => NavigationService = navigationContext.NavigationService;
+        public void OnNavigatedFrom(NavigationContext navigationContext) {}
+        public void OnNavigatedTo(NavigationContext navigationContext) => NavigationService = navigationContext.NavigationService;
     }
 }

@@ -16,16 +16,20 @@ namespace Prism8WpfSample.ViewModels
         public CustomDialogAViewModel(IRegionManager _regionManager)
         {
 
-            CustomDialogARegionManager.Value = _regionManager.CreateRegionManager();
+            //CustomDialogARegionManager.Value = _regionManager.CreateRegionManager();
+            CustomDialogARegionManager.Value = _regionManager;
             this._regionManager = _regionManager;
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            //if (parameters.TryGetValue<string>("ViewName", out string v))
-            //    CustomDialogARegionManager.Value.RequestNavigate("CustomDialogARegion", v);
-            //else
-                CustomDialogARegionManager.Value.RegisterViewWithRegion("CustomDialogARegion", "CustomDialogAAView");
+            if (parameters.TryGetValue<IRegionManager>("rm", out IRegionManager rm))
+                CustomDialogARegionManager.Value = rm;
+
+            if (parameters.TryGetValue<string>("ViewName", out string v))
+                CustomDialogARegionManager.Value.RequestNavigate("CustomDialogARegion", v);
+            else
+                CustomDialogARegionManager.Value.RequestNavigate("CustomDialogARegion", "CustomDialogAAView");
         }
 
         public void OnDialogClosed() {}

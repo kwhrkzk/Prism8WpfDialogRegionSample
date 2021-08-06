@@ -6,7 +6,7 @@ using Reactive.Bindings;
 
 namespace Prism8WpfSample.ViewModels
 {
-    public class ContentViewModel : BindableBase, IConfirmNavigationRequest, IRegionMemberLifetime
+    public class ContentViewModel : BindableBase, INavigationAware, IRegionMemberLifetime
     {
 
         public bool KeepAlive => true;
@@ -24,15 +24,10 @@ namespace Prism8WpfSample.ViewModels
             DialogBCommand.Subscribe(_ => DialogService.Show("CustomDialogBView", new DialogParameters(), _ => {}, "CustomDialogBWindow"));
         }
 
-        public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
-        {
-        }
-
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            NavigationService = navigationContext.NavigationService;
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
